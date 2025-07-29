@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "clean": "pnpm -r exec rm -rf node_modules && rm -rf node_modules",
+    "clean": "git clean -xdf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
