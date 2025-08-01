@@ -1,7 +1,13 @@
 import type { Auth } from "convex/server";
 import { v } from "convex/values";
+import { NoOp } from "convex-helpers/server/customFunctions";
+import { zCustomMutation } from "convex-helpers/server/zod";
+import { z } from "zod";
 import { internal } from "../convex/_generated/api";
 import { mutation, query } from "./_generated/server";
+
+// Create custom mutation builder for enhanced validation
+const zMutation = zCustomMutation(mutation, NoOp);
 
 export const getUserId = async (ctx: { auth: Auth }) => {
   return (await ctx.auth.getUserIdentity())?.subject;
@@ -36,12 +42,12 @@ export const getNote = query({
   },
 });
 
-// Create a new note for a user
-export const createNote = mutation({
+// Create a new note for a user - using Zod for enhanced validation
+export const createNote = zMutation({
   args: {
-    title: v.string(),
-    content: v.string(),
-    isSummary: v.boolean(),
+    title: z.string().min(1).max(200),
+    content: z.string().min(1).max(10000),
+    isSummary: z.boolean(),
   },
   handler: async (ctx, { title, content, isSummary }) => {
     const userId = await getUserId(ctx);
@@ -60,6 +66,7 @@ export const createNote = mutation({
   },
 });
 
+// Delete a note
 export const deleteNote = mutation({
   args: {
     noteId: v.id("notes"),

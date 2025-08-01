@@ -108,6 +108,58 @@ Convex Type  | TS/JS type  |  Example Usage         | Validator for argument val
 | Object      | Object      | `{a: "abc"}`           | `v.object({property: value})`                  | Convex only supports "plain old JavaScript objects" (objects that do not have a custom prototype). Objects can have at most 1024 entries. Field names must be nonempty and not start with "$" or "_". |
 | Record      | Record      | `{"a": "1", "b": "2"}` | `v.record(keys, values)`                       | Records are objects at runtime, but can have dynamic keys. Keys must be only ASCII characters, nonempty, and not start with "$" or "_".                                                               |
 
+### Zod Integration
+- Use Zod for runtime validation in Convex functions when you need:
+  - More specific validation than standard Convex validators
+  - Runtime type checking for JSON payloads
+  - Complex validation logic with custom error messages
+  - Type inference from schemas
+
+#### Zod Setup
+**Important**: Use zod version 3.x (e.g., `zod@^3.23.8`) for compatibility with convex-helpers.
+```typescript
+import { z } from "zod";
+import { zCustomQuery, zCustomMutation, zid } from "convex-helpers/server/zod";
+import { NoOp } from "convex-helpers/server/customFunctions";
+
+// Create custom builders
+const zQuery = zCustomQuery(query, NoOp);
+const zMutation = zCustomMutation(mutation, NoOp);
+```
+
+#### Zod Usage Examples
+- Query with Zod validation:
+```typescript
+export const getUser = zQuery({
+  args: { userId: zid("users") },
+  handler: async (ctx, args) => {
+    return await ctx.db.get(args.userId);
+  },
+});
+```
+
+- Mutation with enhanced validation:
+```typescript
+export const createPost = zMutation({
+  args: {
+    title: z.string().min(1).max(200),
+    content: z.string().min(10).max(10000),
+    tags: z.array(z.string()).max(5).optional(),
+  },
+  handler: async (ctx, args) => {
+    return await ctx.db.insert("posts", args);
+  },
+});
+```
+
+#### Best Practices for Zod in Convex
+- Create reusable schemas for common data structures
+- Use `zid()` for document ID validation instead of `v.id()`
+- Add output validation for critical queries and mutations
+- Leverage Zod's error messages for better debugging
+- Combine with standard Convex validators when appropriate
+- Define schemas at the top of the file for reusability
+
 ### Function registration
 - Use `internalQuery`, `internalMutation`, and `internalAction` to register internal functions. These functions are private and aren't part of an app's API. They can only be called by other Convex functions. These functions are always imported from `./_generated/server`.
 - Use `query`, `mutation`, and `action` to register public functions. These functions are part of the public API and are exposed to the public Internet. Do NOT use `query`, `mutation`, or `action` to register sensitive internal functions that should be kept private.
@@ -801,6 +853,58 @@ Convex Type  | TS/JS type  |  Example Usage         | Validator for argument val
 | Array       | Array]      | `[1, 3.2, "abc"]`      | `v.array(values)`                              | Arrays can have at most 8192 values.                                                                                                                                                                  |
 | Object      | Object      | `{a: "abc"}`           | `v.object({property: value})`                  | Convex only supports "plain old JavaScript objects" (objects that do not have a custom prototype). Objects can have at most 1024 entries. Field names must be nonempty and not start with "$" or "_". |
 | Record      | Record      | `{"a": "1", "b": "2"}` | `v.record(keys, values)`                       | Records are objects at runtime, but can have dynamic keys. Keys must be only ASCII characters, nonempty, and not start with "$" or "_".                                                               |
+
+### Zod Integration
+- Use Zod for runtime validation in Convex functions when you need:
+  - More specific validation than standard Convex validators
+  - Runtime type checking for JSON payloads
+  - Complex validation logic with custom error messages
+  - Type inference from schemas
+
+#### Zod Setup
+**Important**: Use zod version 3.x (e.g., `zod@^3.23.8`) for compatibility with convex-helpers.
+```typescript
+import { z } from "zod";
+import { zCustomQuery, zCustomMutation, zid } from "convex-helpers/server/zod";
+import { NoOp } from "convex-helpers/server/customFunctions";
+
+// Create custom builders
+const zQuery = zCustomQuery(query, NoOp);
+const zMutation = zCustomMutation(mutation, NoOp);
+```
+
+#### Zod Usage Examples
+- Query with Zod validation:
+```typescript
+export const getUser = zQuery({
+  args: { userId: zid("users") },
+  handler: async (ctx, args) => {
+    return await ctx.db.get(args.userId);
+  },
+});
+```
+
+- Mutation with enhanced validation:
+```typescript
+export const createPost = zMutation({
+  args: {
+    title: z.string().min(1).max(200),
+    content: z.string().min(10).max(10000),
+    tags: z.array(z.string()).max(5).optional(),
+  },
+  handler: async (ctx, args) => {
+    return await ctx.db.insert("posts", args);
+  },
+});
+```
+
+#### Best Practices for Zod in Convex
+- Create reusable schemas for common data structures
+- Use `zid()` for document ID validation instead of `v.id()`
+- Add output validation for critical queries and mutations
+- Leverage Zod's error messages for better debugging
+- Combine with standard Convex validators when appropriate
+- Define schemas at the top of the file for reusability
 
 ### Function registration
 - Use `internalQuery`, `internalMutation`, and `internalAction` to register internal functions. These functions are private and aren't part of an app's API. They can only be called by other Convex functions. These functions are always imported from `./_generated/server`.
