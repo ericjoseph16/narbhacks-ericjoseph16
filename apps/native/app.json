@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#e1e1e1"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
@@ -25,7 +27,10 @@
         "foregroundImage": "./assets/narb_light_ascii.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"]
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/narb_light_ascii.png"
@@ -39,7 +44,9 @@
           "locationAlwaysPermission": "Allow narbhacks to use your location to show your current position.",
           "locationWhenInUsePermission": "Allow narbhacks to use your location to show your current position."
         }
-      ]
+      ],
+      "expo-asset",
+      "expo-web-browser"
     ]
   }
 }
