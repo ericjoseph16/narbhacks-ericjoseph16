@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@clerk/nextjs": "^6.23.0",
     "convex": "^1.25.0",
     "convex-helpers": "^0.1.100",
     "openai": "^4.45.0",

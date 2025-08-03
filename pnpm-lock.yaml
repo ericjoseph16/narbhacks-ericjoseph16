@@ -223,6 +223,9 @@ importers:
 
   packages/backend:
     dependencies:
+      '@clerk/nextjs':
+        specifier: ^6.23.0
+        version: 6.23.3(next@15.3.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       convex:
         specifier: ^1.25.0
         version: 1.25.2(@clerk/clerk-react@5.32.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
@@ -9342,15 +9345,6 @@ snapshots:
       react: 19.0.0
       typescript: 5.8.3
       zod: 3.25.76
-
-  convex@1.25.2(@clerk/clerk-react@5.32.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
-    dependencies:
-      esbuild: 0.25.4
-      jwt-decode: 4.0.0
-      prettier: 3.5.3
-    optionalDependencies:
-      '@clerk/clerk-react': 5.32.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react: 18.3.1
 
   convex@1.25.2(@clerk/clerk-react@5.32.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0):
     dependencies:
