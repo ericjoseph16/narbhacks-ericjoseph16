@@ -9,8 +9,8 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Logo from "./common/Logo";
-import { UserNav } from "./common/UserNav";
+import Logo from "./Logo";
+import { UserNav } from "./UserNav";
 
 type NavigationItem = {
   name: string;
@@ -66,7 +66,7 @@ export default function Header() {
                         type="button"
                         className=" text-white text-center text-xl not-italic font-normal leading-[normal] font-montserrat px-[22px] py-[11px] button"
                       >
-                        See your Notes
+                        View Drills
                       </button>
                     </Link>
                     <div className="flex items-center gap-2">

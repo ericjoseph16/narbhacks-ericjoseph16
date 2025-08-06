@@ -44,7 +44,7 @@ export default function CreateNote() {
           />
           <span className="text-[17px] sm:text-3xl not-italic font-medium leading-[79%] tracking-[-0.75px]">
             {" "}
-            New Note
+            New Drill
           </span>
         </button>
       </div>
@@ -86,7 +86,7 @@ export default function CreateNote() {
                         as="h3"
                         className="text-black text-center text-xl sm:text-left sm:text-[35px] pb-6 sm:pb-8 not-italic font-semibold leading-[90.3%] tracking-[-0.875px]"
                       >
-                        Create New Note
+                        Create New Drill
                       </Dialog.Title>
                       <div className="mt-2 space-y-3">
                         <div className="pb-2">
@@ -101,7 +101,7 @@ export default function CreateNote() {
                               id="title"
                               name="title"
                               type="text"
-                              placeholder="Note Title"
+                              placeholder="Drill Title"
                               autoComplete="title"
                               value={title}
                               onChange={(e) => setTitle(e.target.value)}
@@ -115,14 +115,14 @@ export default function CreateNote() {
                             htmlFor="description"
                             className=" text-black text-[17px] sm:text-2xl not-italic font-medium leading-[90.3%] tracking-[-0.6px]"
                           >
-                            The Note
+                            Drill Description
                           </label>
                           <div className="mt-2 pb-[18px]">
                             <textarea
                               id="description"
                               name="description"
                               rows={8}
-                              placeholder="Start your note "
+                              placeholder="Describe your skill drill..."
                               className="block w-full rounded-md border-0 py-1.5  border-[#D0D5DD] text-2xl shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:leading-6 text-black text-[17px] not-italic font-light leading-[90.3%] tracking-[-0.425px] sm:text-2xl"
                               value={content}
                               onChange={(e) => setContent(e.target.value)}

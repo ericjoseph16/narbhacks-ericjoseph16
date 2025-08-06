@@ -1,5 +1,5 @@
 import type { Id } from "@packages/backend/convex/_generated/dataModel";
-import Header from "@/components/Header";
+import Header from "@/components/common/Header";
 import NoteDetails from "@/components/notes/NoteDetails";
 
 export default async function Page({
