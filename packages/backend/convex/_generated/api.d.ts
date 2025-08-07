@@ -15,6 +15,7 @@ import type {
 } from "convex/server";
 import type * as api_drills from "../api/drills.js";
 import type * as api_seed from "../api/seed.js";
+import type * as api_sessions from "../api/sessions.js";
 import type * as api_skills from "../api/skills.js";
 import type * as api_test from "../api/test.js";
 import type * as models_index from "../models/index.js";
@@ -32,6 +33,7 @@ import type * as utils_utils from "../utils/utils.js";
 declare const fullApi: ApiFromModules<{
   "api/drills": typeof api_drills;
   "api/seed": typeof api_seed;
+  "api/sessions": typeof api_sessions;
   "api/skills": typeof api_skills;
   "api/test": typeof api_test;
   "models/index": typeof models_index;
