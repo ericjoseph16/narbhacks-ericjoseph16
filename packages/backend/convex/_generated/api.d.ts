@@ -13,9 +13,13 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
-import type * as notes from "../notes.js";
-import type * as openai from "../openai.js";
-import type * as utils from "../utils.js";
+import type * as api_drills from "../api/drills.js";
+import type * as api_seed from "../api/seed.js";
+import type * as api_skills from "../api/skills.js";
+import type * as api_test from "../api/test.js";
+import type * as models_index from "../models/index.js";
+import type * as utils_types from "../utils/types.js";
+import type * as utils_utils from "../utils/utils.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -26,9 +30,13 @@ import type * as utils from "../utils.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
-  notes: typeof notes;
-  openai: typeof openai;
-  utils: typeof utils;
+  "api/drills": typeof api_drills;
+  "api/seed": typeof api_seed;
+  "api/skills": typeof api_skills;
+  "api/test": typeof api_test;
+  "models/index": typeof models_index;
+  "utils/types": typeof utils_types;
+  "utils/utils": typeof utils_utils;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
