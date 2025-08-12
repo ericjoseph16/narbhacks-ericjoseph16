@@ -5,7 +5,7 @@ const TestimonialsData = [
   {
     rating: 5,
     review:
-      "Great note-taking application! The AI features make note-taking a breeze",
+      "Amazing skill development app! The AI-generated drills are perfectly tailored to my level",
     name: "Ryan Lowry",
     designation: "Engineer & Author",
     profile: "/images/profile.png",
@@ -14,7 +14,7 @@ const TestimonialsData = [
   {
     rating: 5,
     review:
-      "Really like the clean design of UseNotes. The AI-driven search is impressively accurate, adding a personal dimension to my notes. Fast and very easy to use.",
+      "Really like the clean design of SkillDrill. The AI-driven recommendations are impressively accurate, adding a personal dimension to my practice. Fast and very easy to use.",
     name: "John Collins",
     designation: "Engineer & Author",
     profile: "/images/profile.png",
@@ -22,7 +22,7 @@ const TestimonialsData = [
   },
   {
     rating: 5,
-    review: "Simply brilliant! UseNotes has elevated my productivity.",
+    review: "Simply brilliant! SkillDrill has elevated my practice routine.",
     name: "Moe Partuj",
     designation: "Student",
     profile: "/images/Moe-Partuj.jpeg",

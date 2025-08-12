@@ -13,12 +13,14 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as api_ai from "../api/ai.js";
 import type * as api_drills from "../api/drills.js";
 import type * as api_seed from "../api/seed.js";
 import type * as api_sessions from "../api/sessions.js";
 import type * as api_skills from "../api/skills.js";
-import type * as api_test from "../api/test.js";
+import type * as api_users from "../api/users.js";
 import type * as models_index from "../models/index.js";
+import type * as services_ai from "../services/ai.js";
 import type * as utils_types from "../utils/types.js";
 import type * as utils_utils from "../utils/utils.js";
 
@@ -31,12 +33,14 @@ import type * as utils_utils from "../utils/utils.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  "api/ai": typeof api_ai;
   "api/drills": typeof api_drills;
   "api/seed": typeof api_seed;
   "api/sessions": typeof api_sessions;
   "api/skills": typeof api_skills;
-  "api/test": typeof api_test;
+  "api/users": typeof api_users;
   "models/index": typeof models_index;
+  "services/ai": typeof services_ai;
   "utils/types": typeof utils_types;
   "utils/utils": typeof utils_utils;
 }>;

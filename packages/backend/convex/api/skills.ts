@@ -1,8 +1,8 @@
 // Skills-related functions
 
-import { mutation, query } from "../_generated/server";
 import { v } from "convex/values";
 import type { Id } from "../_generated/dataModel";
+import { mutation, query } from "../_generated/server";
 
 /**
  * Create a new skill
@@ -102,4 +102,4 @@ export const getSkillById = query({
     const skill = await ctx.db.get(args.skillId);
     return skill;
   },
-}); 
+});

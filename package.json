@@ -23,8 +23,5 @@
     "apps/*",
     "packages/*"
   ],
-  "packageManager": "pnpm@9.15.1",
-  "dependencies": {
-    "openai": "^5.11.0"
-  }
+  "packageManager": "pnpm@9.15.1"
 }

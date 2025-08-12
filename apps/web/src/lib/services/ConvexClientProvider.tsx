@@ -23,9 +23,11 @@ export default function ConvexClientProvider({
   children: ReactNode;
 }) {
   const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
-  
+
   if (!clerkPublishableKey) {
-    console.warn("Missing NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY environment variable");
+    console.warn(
+      "Missing NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY environment variable"
+    );
     return <>{children}</>;
   }
 

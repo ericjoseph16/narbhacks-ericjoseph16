@@ -10,7 +10,7 @@ featuring:
 - React Native [Expo](https://expo.dev/): Mobile/native app with New Architecture
 - [Convex](https://convex.dev): Backend, database, server functions
 - [Clerk](https://clerk.dev): User authentication
-- OpenAI: Text summarization (optional)
+- Google Gemini: Text summarization (optional)
 
 The example app is a note taking app that can summarize notes using AI. Features
 include:
@@ -22,7 +22,7 @@ include:
 - Relational database
 - End to end type safety (schema definition to frontend API clients)
 - User authentication
-- Asynchronous call to an OpenAI
+- Asynchronous call to a Google Gemini
 - Everything is realtime by default
 
 ## Using this example
@@ -56,8 +56,8 @@ Convex environment variables
 Make sure to enable **Google and Apple** as possible Social Connection
 providers, as these are used by the React Native login implementation.
 
-After that, optionally add the `OPENAI_API_KEY` env var from
-[OpenAI](https://platform.openai.com/account/api-keys) to your Convex
+After that, optionally add the `GOOGLE_GEMINI_API_KEY` env var from
+[Google AI Studio](https://makersuite.google.com/app/apikey) to your Convex
 environment variables to get AI summaries.
 
 The `setup` command should now finish successfully.

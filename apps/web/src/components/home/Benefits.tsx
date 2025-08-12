@@ -2,26 +2,27 @@ import Image from "next/image";
 
 const benefits = [
   {
-    title: "Effortless Note-Taking",
-    description: "Capture thoughts effortlessly with our intuitive interface",
+    title: "Personalized Drills",
+    description:
+      "Get AI-generated drills tailored to your skill level and goals",
     image: "/images/goodNews.png",
   },
   {
-    title: "Seamless Sync",
+    title: "Progress Tracking",
     description:
-      "Access your notes anytime, anywhere, with seamless cloud synchronization.",
+      "Monitor your improvement over time with detailed analytics and insights.",
     image: "/images/cloudSync.png",
   },
   {
-    title: "Enhanced Productivity",
+    title: "Daily Motivation",
     description:
-      "Let AI handle organization, so you can focus on what matters most.",
+      "Stay motivated with daily challenges and consistent practice routines.",
     image: "/images/googleCalander.png",
   },
   {
     title: "AI-Powered Insights",
     description:
-      "Gain valuable insights with smart analytics based on your note patterns.",
+      "Get personalized recommendations based on your practice patterns and progress.",
     image: "/images/bot.png",
   },
 ];
@@ -41,7 +42,7 @@ const Benefits = () => {
           Benefits
         </p>
         <h3 className=" text-black text-3xl sm:text-[57px] not-italic font-medium leading-[90.3%] tracking-[-1.425px] font-montserrat text-center pb-[46px] sm:pb-[87px]">
-          Why Choose UseNotes
+          Why Choose SkillDrill
         </h3>
 
         <div className="relative">

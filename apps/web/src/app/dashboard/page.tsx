@@ -16,11 +16,11 @@ export default async function DashboardPage() {
         <div className="px-4 py-6 sm:px-0">
           <div className="bg-white rounded-lg shadow p-6">
             <h1 className="text-3xl font-bold text-gray-900 mb-4">
-              Welcome to Your Dashboard
+              Welcome to SkillDrill
             </h1>
             <p className="text-gray-600 mb-6">
-              This is your protected dashboard. Only signed-in users can see
-              this page.
+              Your personal skill improvement assistant. Get daily drills, track
+              your progress, and master new skills.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -49,6 +49,20 @@ export default async function DashboardPage() {
                 <p className="text-purple-700">
                   Monitor your improvement over time.
                 </p>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Quick Actions
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button className="bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700">
+                  Get Today's Drill
+                </button>
+                <button className="bg-green-600 text-white px-6 py-3 rounded-md font-medium hover:bg-green-700">
+                  View Progress
+                </button>
               </div>
             </div>
           </div>

@@ -20,9 +20,9 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
 # Get this from: https://dashboard.convex.dev/
 NEXT_PUBLIC_CONVEX_URL=https://your-deployment-name.convex.cloud
 
-# OpenAI (Optional for future AI features)
-# Get this from: https://platform.openai.com/api-keys
-OPENAI_API_KEY=sk-your_openai_api_key_here
+# Google Gemini (Optional for future AI features)
+# Get this from: https://makersuite.google.com/app/apikey
+GOOGLE_GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
 ## Setup Steps
@@ -40,8 +40,8 @@ OPENAI_API_KEY=sk-your_openai_api_key_here
 3. Copy your deployment URL
 4. Add it to your `.env.local` file
 
-### 3. OpenAI Setup (Optional for future features)
-1. Go to [OpenAI Platform](https://platform.openai.com/api-keys)
+### 3. Google Gemini Setup (Optional for future features)
+1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
 2. Create an API key
 3. Add it to your `.env.local` file
 

@@ -65,4 +65,4 @@ export interface SampleDrillSession {
   drillId: Id<"drills">;
   completedAt: number;
   notes?: string;
-} 
+}

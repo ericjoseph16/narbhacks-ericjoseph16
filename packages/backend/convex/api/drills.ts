@@ -1,8 +1,8 @@
 // Drills-related functions
 
-import { mutation, query } from "../_generated/server";
 import { v } from "convex/values";
 import type { Id } from "../_generated/dataModel";
+import { mutation, query } from "../_generated/server";
 
 /**
  * Create a new drill
@@ -42,7 +42,9 @@ export const createDrill = mutation({
 
     // Verify the category exists for this skill
     if (!skill.categories.includes(args.category)) {
-      throw new Error(`Category "${args.category}" not found for skill "${skill.name}"`);
+      throw new Error(
+        `Category "${args.category}" not found for skill "${skill.name}"`
+      );
     }
 
     const drillId = await ctx.db.insert("drills", {
@@ -186,12 +188,14 @@ export const getDrillsByCategory = query({
 
     // Verify the category exists for this skill
     if (!skill.categories.includes(args.category)) {
-      throw new Error(`Category "${args.category}" not found for skill "${skill.name}"`);
+      throw new Error(
+        `Category "${args.category}" not found for skill "${skill.name}"`
+      );
     }
 
     const drills = await ctx.db
       .query("drills")
-      .withIndex("by_skillId_and_category", (q) => 
+      .withIndex("by_skillId_and_category", (q) =>
         q.eq("skillId", args.skillId).eq("category", args.category)
       )
       .order("desc")
@@ -199,4 +203,4 @@ export const getDrillsByCategory = query({
 
     return drills;
   },
-}); 
+});

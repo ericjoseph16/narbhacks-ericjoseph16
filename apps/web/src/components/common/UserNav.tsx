@@ -1,5 +1,5 @@
 import { SignOutButton } from "@clerk/nextjs";
-import { LogOut, Paintbrush2 } from "lucide-react";
+import { LogOut, Target } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
@@ -47,9 +47,9 @@ export function UserNav({ name, email, image }: UserNavProps) {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <Link href="/notes">
+        <Link href="/dashboard">
           <DropdownMenuItem className="hover:cursor-pointer hover:bg-gray-200">
-            <Paintbrush2 className="mr-2 h-4 w-4 text-black" />
+            <Target className="mr-2 h-4 w-4 text-black" />
             <span className="text-black">Dashboard</span>
           </DropdownMenuItem>
         </Link>

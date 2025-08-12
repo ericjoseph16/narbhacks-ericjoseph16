@@ -1,8 +1,8 @@
 // Drill sessions functions
 
-import { mutation, query } from "../_generated/server";
 import { v } from "convex/values";
 import type { Id } from "../_generated/dataModel";
+import { mutation, query } from "../_generated/server";
 
 /**
  * Log that a user completed a drill (timestamp is now)
@@ -33,7 +33,7 @@ export const logDrillSession = mutation({
       .query("users")
       .withIndex("by_userId", (q) => q.eq("userId", args.userId))
       .first();
-    
+
     if (!user) {
       throw new Error("User not found");
     }
@@ -101,7 +101,7 @@ export const getDrillHistory = query({
       .query("users")
       .withIndex("by_userId", (q) => q.eq("userId", args.userId))
       .first();
-    
+
     if (!user) {
       throw new Error("User not found");
     }
@@ -109,7 +109,9 @@ export const getDrillHistory = query({
     // Get user's drill sessions in reverse chronological order
     let sessions = await ctx.db
       .query("drillSessions")
-      .withIndex("by_userId_and_completedAt", (q) => q.eq("userId", args.userId))
+      .withIndex("by_userId_and_completedAt", (q) =>
+        q.eq("userId", args.userId)
+      )
       .order("desc")
       .collect();
 
@@ -182,7 +184,7 @@ export const getDrillsByUser = query({
       .query("users")
       .withIndex("by_userId", (q) => q.eq("userId", args.userId))
       .first();
-    
+
     if (!user) {
       throw new Error("User not found");
     }
@@ -311,7 +313,7 @@ export const getUserDrillStats = query({
       .query("users")
       .withIndex("by_userId", (q) => q.eq("userId", args.userId))
       .first();
-    
+
     if (!user) {
       throw new Error("User not found");
     }
@@ -319,7 +321,9 @@ export const getUserDrillStats = query({
     // Get all user's sessions
     const sessions = await ctx.db
       .query("drillSessions")
-      .withIndex("by_userId_and_completedAt", (q) => q.eq("userId", args.userId))
+      .withIndex("by_userId_and_completedAt", (q) =>
+        q.eq("userId", args.userId)
+      )
       .collect();
 
     // Get drill and skill details
@@ -348,11 +352,19 @@ export const getUserDrillStats = query({
 
     // Calculate statistics
     const totalSessions = validSessions.length;
-    const uniqueDrills = new Set(validSessions.map(s => s.drill._id)).size;
-    const uniqueSkills = new Set(validSessions.map(s => s.skill._id)).size;
+    const uniqueDrills = new Set(validSessions.map((s) => s.drill._id)).size;
+    const uniqueSkills = new Set(validSessions.map((s) => s.skill._id)).size;
 
     // Group by skill
-    const sessionsBySkill = new Map<string, { skillName: string; skillId: string; sessionCount: number; lastCompleted?: number }>();
+    const sessionsBySkill = new Map<
+      string,
+      {
+        skillName: string;
+        skillId: Id<"skills">;
+        sessionCount: number;
+        lastCompleted?: number;
+      }
+    >();
     validSessions.forEach(({ session, skill }) => {
       const key = skill._id;
       const existing = sessionsBySkill.get(key);
@@ -364,7 +376,7 @@ export const getUserDrillStats = query({
       } else {
         sessionsBySkill.set(key, {
           skillName: skill.name,
-          skillId: skill._id,
+          skillId: skill._id as Id<"skills">,
           sessionCount: 1,
           lastCompleted: session.completedAt,
         });
@@ -375,7 +387,8 @@ export const getUserDrillStats = query({
     const sessionsByDifficulty: Record<string, number> = {};
     validSessions.forEach(({ session, drill }) => {
       const difficulty = drill.difficulty;
-      sessionsByDifficulty[difficulty] = (sessionsByDifficulty[difficulty] || 0) + 1;
+      sessionsByDifficulty[difficulty] =
+        (sessionsByDifficulty[difficulty] || 0) + 1;
     });
 
     // Group by category
@@ -394,4 +407,4 @@ export const getUserDrillStats = query({
       sessionsByCategory,
     };
   },
-}); 
+});

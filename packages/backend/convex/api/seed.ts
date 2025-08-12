@@ -1,13 +1,13 @@
 // Database seeding function for testing and development
 
-import { mutation, query } from "../_generated/server";
 import { v } from "convex/values";
 import type { Id } from "../_generated/dataModel";
-import { 
-  sampleUsers, 
-  sampleSkills, 
-  getSampleDrills, 
-  getSampleDrillSessions 
+import { mutation, query } from "../_generated/server";
+import {
+  getSampleDrillSessions,
+  getSampleDrills,
+  sampleSkills,
+  sampleUsers,
 } from "../models/index";
 
 /**
@@ -42,7 +42,7 @@ export const getDatabaseStats = query({
         skillsCount: 0,
         drillsCount: 0,
         sessionsCount: 0,
-        message: `Error checking database: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        message: `Error checking database: ${error instanceof Error ? error.message : "Unknown error"}`,
       };
     }
   },
@@ -115,7 +115,7 @@ export const seedDatabase = mutation({
 
       // Step 4: Create drill sessions
       const sampleSessions = getSampleDrillSessions(
-        sampleUsers.map(u => u.userId), 
+        sampleUsers.map((u) => u.userId),
         createdDrillIds
       );
       for (const sessionData of sampleSessions) {
@@ -129,9 +129,8 @@ export const seedDatabase = mutation({
       }
 
       results.message = `Successfully seeded database with ${results.usersCreated} users, ${results.skillsCreated} skills, ${results.drillsCreated} drills, and ${results.sessionsCreated} sessions.`;
-
     } catch (error) {
-      results.message = `Error seeding database: ${error instanceof Error ? error.message : 'Unknown error'}`;
+      results.message = `Error seeding database: ${error instanceof Error ? error.message : "Unknown error"}`;
       throw new Error(results.message);
     }
 
@@ -178,8 +177,8 @@ export const clearDatabase = mutation({
         message: `Successfully cleared database. Deleted ${sessions.length} sessions, ${drills.length} drills, ${skills.length} skills, and ${users.length} users.`,
       };
     } catch (error) {
-      const message = `Error clearing database: ${error instanceof Error ? error.message : 'Unknown error'}`;
+      const message = `Error clearing database: ${error instanceof Error ? error.message : "Unknown error"}`;
       throw new Error(message);
     }
   },
-}); 
+});
